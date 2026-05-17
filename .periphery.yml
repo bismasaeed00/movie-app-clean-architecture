@@ -1,0 +1,5 @@
+project: MovieAppClean.xcodeproj
+schemes:
+- MovieAppClean
+targets:
+- MovieAppClean

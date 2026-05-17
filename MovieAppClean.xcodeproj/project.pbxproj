@@ -6,7 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2EB728092FB9C690008F0F16 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2EB728082FB9C68D008F0F16 /* .swiftlint.yml */; };
+		2EB7280C2FB9C7E9008F0F16 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB7280B2FB9C7E9008F0F16 /* CoreData.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		2EB728082FB9C68D008F0F16 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		2EB7280B2FB9C7E9008F0F16 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2EF1305E2FB0D35B0095A6DA /* MovieAppClean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppClean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -23,16 +30,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB7280C2FB9C7E9008F0F16 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2EB7280A2FB9C7E9008F0F16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EB7280B2FB9C7E9008F0F16 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2EF130552FB0D35B0095A6DA = {
 			isa = PBXGroup;
 			children = (
+				2EB728082FB9C68D008F0F16 /* .swiftlint.yml */,
 				2EF130602FB0D35B0095A6DA /* MovieAppClean */,
+				2EB7280A2FB9C7E9008F0F16 /* Frameworks */,
 				2EF1305F2FB0D35B0095A6DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +77,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2EB728112FB9C8DE008F0F16 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2EF130602FB0D35B0095A6DA /* MovieAppClean */,
@@ -94,6 +113,9 @@
 			);
 			mainGroup = 2EF130552FB0D35B0095A6DA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2EB7280D2FB9C879008F0F16 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2EF1305F2FB0D35B0095A6DA /* Products */;
 			projectDirPath = "";
@@ -109,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EB728092FB9C690008F0F16 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +146,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2EB728112FB9C8DE008F0F16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2EB728102FB9C8DE008F0F16 /* SwiftLintBuildToolPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2EF1306C2FB0D35C0095A6DA /* Debug */ = {
@@ -256,11 +286,12 @@
 				DEVELOPMENT_TEAM = H4G46UM975;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MovieApp - Clean";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -288,11 +319,12 @@
 				DEVELOPMENT_TEAM = H4G46UM975;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MovieApp - Clean";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2EB7280D2FB9C879008F0F16 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = exactVersion;
+				version = 0.63.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2EB728102FB9C8DE008F0F16 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2EB7280D2FB9C879008F0F16 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2EF130562FB0D35B0095A6DA /* Project object */;
 }
