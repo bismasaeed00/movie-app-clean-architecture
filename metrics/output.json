@@ -1,0 +1,422 @@
+{
+    "non-test-frameworks": [
+        {
+            "MovieAppClean": {
+                "loc": 1230,
+                "noc": 242,
+                "poc": 16.44,
+                "n_a": 13,
+                "n_c": 35,
+                "nom": 60,
+                "not": 0,
+                "noi": 0,
+                "analysis": "The code is under commented. Zone of Pain. Highly stable and concrete component - rigid, hard to extend (not abstract). This component should not be volatile (e.g. a stable foundation library such as Strings).",
+                "dependencies": [],
+                "submodules": {
+                    "MovieAppClean": {
+                        "n_of_files": 38,
+                        "metric": {
+                            "loc": 1230,
+                            "noc": 242,
+                            "n_a": 13,
+                            "n_c": 35,
+                            "nom": 60,
+                            "not": 0,
+                            "poc": 16.44
+                        },
+                        "submodules": [
+                            {
+                                "MovieAppClean": {
+                                    "n_of_files": 38,
+                                    "metric": {
+                                        "loc": 1230,
+                                        "noc": 242,
+                                        "n_a": 13,
+                                        "n_c": 35,
+                                        "nom": 60,
+                                        "not": 0,
+                                        "poc": 16.44
+                                    },
+                                    "submodules": [
+                                        {
+                                            "Application": {
+                                                "n_of_files": 2,
+                                                "metric": {
+                                                    "loc": 25,
+                                                    "noc": 12,
+                                                    "n_a": 0,
+                                                    "n_c": 2,
+                                                    "nom": 0,
+                                                    "not": 0,
+                                                    "poc": 32.432
+                                                },
+                                                "submodules": []
+                                            }
+                                        },
+                                        {
+                                            "Data": {
+                                                "n_of_files": 8,
+                                                "metric": {
+                                                    "loc": 194,
+                                                    "noc": 54,
+                                                    "n_a": 0,
+                                                    "n_c": 6,
+                                                    "nom": 7,
+                                                    "not": 0,
+                                                    "poc": 21.774
+                                                },
+                                                "submodules": [
+                                                    {
+                                                        "Network": {
+                                                            "n_of_files": 6,
+                                                            "metric": {
+                                                                "loc": 110,
+                                                                "noc": 36,
+                                                                "n_a": 0,
+                                                                "n_c": 5,
+                                                                "nom": 1,
+                                                                "not": 0,
+                                                                "poc": 24.658
+                                                            },
+                                                            "submodules": [
+                                                                {
+                                                                    "DTOs": {
+                                                                        "n_of_files": 4,
+                                                                        "metric": {
+                                                                            "loc": 32,
+                                                                            "noc": 24,
+                                                                            "n_a": 0,
+                                                                            "n_c": 4,
+                                                                            "nom": 0,
+                                                                            "not": 0,
+                                                                            "poc": 42.857
+                                                                        },
+                                                                        "submodules": []
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "Persistence": {
+                                                            "n_of_files": 2,
+                                                            "metric": {
+                                                                "loc": 84,
+                                                                "noc": 18,
+                                                                "n_a": 0,
+                                                                "n_c": 1,
+                                                                "nom": 6,
+                                                                "not": 0,
+                                                                "poc": 17.647
+                                                            },
+                                                            "submodules": [
+                                                                {
+                                                                    "Mappers": {
+                                                                        "n_of_files": 1,
+                                                                        "metric": {
+                                                                            "loc": 59,
+                                                                            "noc": 12,
+                                                                            "n_a": 0,
+                                                                            "n_c": 0,
+                                                                            "nom": 5,
+                                                                            "not": 0,
+                                                                            "poc": 16.901
+                                                                        },
+                                                                        "submodules": []
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "Domain": {
+                                                "n_of_files": 10,
+                                                "metric": {
+                                                    "loc": 275,
+                                                    "noc": 61,
+                                                    "n_a": 7,
+                                                    "n_c": 10,
+                                                    "nom": 30,
+                                                    "not": 0,
+                                                    "poc": 18.155
+                                                },
+                                                "submodules": [
+                                                    {
+                                                        "Repositories": {
+                                                            "n_of_files": 2,
+                                                            "metric": {
+                                                                "loc": 175,
+                                                                "noc": 13,
+                                                                "n_a": 2,
+                                                                "n_c": 2,
+                                                                "nom": 20,
+                                                                "not": 0,
+                                                                "poc": 6.915
+                                                            },
+                                                            "submodules": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "UseCases": {
+                                                            "n_of_files": 5,
+                                                            "metric": {
+                                                                "loc": 60,
+                                                                "noc": 30,
+                                                                "n_a": 5,
+                                                                "n_c": 5,
+                                                                "nom": 10,
+                                                                "not": 0,
+                                                                "poc": 33.333
+                                                            },
+                                                            "submodules": []
+                                                        }
+                                                    },
+                                                    {
+                                                        "Entities": {
+                                                            "n_of_files": 3,
+                                                            "metric": {
+                                                                "loc": 40,
+                                                                "noc": 18,
+                                                                "n_a": 0,
+                                                                "n_c": 3,
+                                                                "nom": 0,
+                                                                "not": 0,
+                                                                "poc": 31.034
+                                                            },
+                                                            "submodules": []
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "Presentation": {
+                                                "n_of_files": 18,
+                                                "metric": {
+                                                    "loc": 736,
+                                                    "noc": 115,
+                                                    "n_a": 6,
+                                                    "n_c": 17,
+                                                    "nom": 23,
+                                                    "not": 0,
+                                                    "poc": 13.514
+                                                },
+                                                "submodules": [
+                                                    {
+                                                        "Scenes": {
+                                                            "n_of_files": 16,
+                                                            "metric": {
+                                                                "loc": 704,
+                                                                "noc": 103,
+                                                                "n_a": 6,
+                                                                "n_c": 16,
+                                                                "nom": 20,
+                                                                "not": 0,
+                                                                "poc": 12.763
+                                                            },
+                                                            "submodules": [
+                                                                {
+                                                                    "Favourites": {
+                                                                        "n_of_files": 2,
+                                                                        "metric": {
+                                                                            "loc": 56,
+                                                                            "noc": 12,
+                                                                            "n_a": 1,
+                                                                            "n_c": 2,
+                                                                            "nom": 2,
+                                                                            "not": 0,
+                                                                            "poc": 17.647
+                                                                        },
+                                                                        "submodules": []
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "Common": {
+                                                                        "n_of_files": 4,
+                                                                        "metric": {
+                                                                            "loc": 160,
+                                                                            "noc": 25,
+                                                                            "n_a": 0,
+                                                                            "n_c": 4,
+                                                                            "nom": 2,
+                                                                            "not": 0,
+                                                                            "poc": 13.514
+                                                                        },
+                                                                        "submodules": [
+                                                                            {
+                                                                                "Components": {
+                                                                                    "n_of_files": 4,
+                                                                                    "metric": {
+                                                                                        "loc": 160,
+                                                                                        "noc": 25,
+                                                                                        "n_a": 0,
+                                                                                        "n_c": 4,
+                                                                                        "nom": 2,
+                                                                                        "not": 0,
+                                                                                        "poc": 13.514
+                                                                                    },
+                                                                                    "submodules": []
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "Root": {
+                                                                        "n_of_files": 2,
+                                                                        "metric": {
+                                                                            "loc": 60,
+                                                                            "noc": 12,
+                                                                            "n_a": 1,
+                                                                            "n_c": 2,
+                                                                            "nom": 1,
+                                                                            "not": 0,
+                                                                            "poc": 16.667
+                                                                        },
+                                                                        "submodules": []
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "MovieDetail": {
+                                                                        "n_of_files": 4,
+                                                                        "metric": {
+                                                                            "loc": 186,
+                                                                            "noc": 25,
+                                                                            "n_a": 2,
+                                                                            "n_c": 4,
+                                                                            "nom": 5,
+                                                                            "not": 0,
+                                                                            "poc": 11.848
+                                                                        },
+                                                                        "submodules": [
+                                                                            {
+                                                                                "Genre": {
+                                                                                    "n_of_files": 2,
+                                                                                    "metric": {
+                                                                                        "loc": 32,
+                                                                                        "noc": 12,
+                                                                                        "n_a": 1,
+                                                                                        "n_c": 2,
+                                                                                        "nom": 1,
+                                                                                        "not": 0,
+                                                                                        "poc": 27.273
+                                                                                    },
+                                                                                    "submodules": []
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "MovieList": {
+                                                                        "n_of_files": 4,
+                                                                        "metric": {
+                                                                            "loc": 242,
+                                                                            "noc": 29,
+                                                                            "n_a": 2,
+                                                                            "n_c": 4,
+                                                                            "nom": 10,
+                                                                            "not": 0,
+                                                                            "poc": 10.701
+                                                                        },
+                                                                        "submodules": [
+                                                                            {
+                                                                                "MovieRow": {
+                                                                                    "n_of_files": 2,
+                                                                                    "metric": {
+                                                                                        "loc": 108,
+                                                                                        "noc": 13,
+                                                                                        "n_a": 1,
+                                                                                        "n_c": 2,
+                                                                                        "nom": 2,
+                                                                                        "not": 0,
+                                                                                        "poc": 10.744
+                                                                                    },
+                                                                                    "submodules": []
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "Routing": {
+                                                            "n_of_files": 2,
+                                                            "metric": {
+                                                                "loc": 32,
+                                                                "noc": 12,
+                                                                "n_a": 0,
+                                                                "n_c": 1,
+                                                                "nom": 3,
+                                                                "not": 0,
+                                                                "poc": 27.273
+                                                            },
+                                                            "submodules": []
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                "fan_in": 0,
+                "fan_out": 0,
+                "i": 0.0,
+                "a": 0.371,
+                "d_3": 0.629
+            }
+        }
+    ],
+    "tests-frameworks": [],
+    "shared": {
+        "loc": 0,
+        "noc": 0,
+        "n_a": 0,
+        "n_c": 0,
+        "nom": 0,
+        "not": 0,
+        "poc": 0.0,
+        "noi": 0
+    },
+    "aggregate": {
+        "non-test-frameworks": {
+            "loc": 1230,
+            "noc": 242,
+            "n_a": 13,
+            "n_c": 35,
+            "nom": 60,
+            "not": 0,
+            "poc": 16.44,
+            "noi": 0
+        },
+        "tests-frameworks": {
+            "loc": 0,
+            "noc": 0,
+            "n_a": 0,
+            "n_c": 0,
+            "nom": 0,
+            "not": 0,
+            "poc": 0.0,
+            "noi": 0
+        },
+        "total": {
+            "loc": 1230,
+            "noc": 242,
+            "n_a": 13,
+            "n_c": 35,
+            "nom": 60,
+            "not": 0,
+            "poc": 16.44,
+            "noi": 0
+        }
+    }
+}
