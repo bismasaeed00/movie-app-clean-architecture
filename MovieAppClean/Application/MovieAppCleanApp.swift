@@ -10,12 +10,10 @@ import CoreData
 
 @main
 struct MovieAppCleanApp: App {
-    let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            RootTabView(viewModel: RootTabViewModel(movieRepository: DependencyManager.shared.movieRepository,
+                                                    favouriteRepository: DependencyManager.shared.favouriteRepository))
         }
     }
 }
