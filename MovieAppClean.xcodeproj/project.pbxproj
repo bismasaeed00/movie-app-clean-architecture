@@ -21,7 +21,6 @@
 		2EB728AB2FBCD8E9008F0F16 /* Exceptions for "MovieAppClean" folder in "MovieAppClean" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Resources/MovieAppClean.xcdatamodeld,
 			);
 			target = 2EF1305D2FB0D35B0095A6DA /* MovieAppClean */;
 		};

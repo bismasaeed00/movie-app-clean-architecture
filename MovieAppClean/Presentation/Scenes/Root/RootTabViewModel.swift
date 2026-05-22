@@ -9,24 +9,40 @@ import Combine
 
 final class RootTabViewModel: RootTabViewModelProtocol {
     private var subscribers: Set<AnyCancellable> = []
-    private let didTapSubject = PassthroughSubject<Int, Never>()
+    private let moviesDidTap = PassthroughSubject<Int, Never>()
+    private let favouritesDidTap = PassthroughSubject<Int, Never>()
 
     let movieListVM: MovieListViewModel
     let favouriteListVM: FavouritesViewModel
-    let movieRouter: MovieRouter
+    let moviesRouter: MovieRouter
+    let favouritesRouter: MovieRouter
 
-    init(movieRepository: MovieRepositoryProtocol, favouriteRepository: FavouriteRepositoryProtocol) {
-        movieListVM = MovieListViewModel(movieRepository: movieRepository, didTapSubject: didTapSubject)
-        favouriteListVM = FavouritesViewModel(favouriteRepository: favouriteRepository, didTapSubject: didTapSubject)
-        movieRouter = MovieRouter(movieRepository: movieRepository, favouriteRepository: favouriteRepository)
+    init(fetchMoviesUseCase: FetchMoviesUseCaseProtocol,
+         refreshMoviesUseCase: RefreshMoviesUseCaseProtocol,
+         fetchFavouritesUseCase: FetchFavouritesUseCaseProtocol,
+         movieDetailViewModelFactory: MovieDetailViewModelFactoryProtocol) {
+        movieListVM = MovieListViewModel(
+            fetchMoviesUseCase: fetchMoviesUseCase,
+            refreshMoviesUseCase: refreshMoviesUseCase,
+            didTapSubject: moviesDidTap
+        )
+        favouriteListVM = FavouritesViewModel(
+            fetchFavouritesUseCase: fetchFavouritesUseCase,
+            didTapSubject: favouritesDidTap
+        )
+        moviesRouter = MovieRouter(factory: movieDetailViewModelFactory)
+        favouritesRouter = MovieRouter(factory: movieDetailViewModelFactory)
 
-        bindTapSubject()
+        bindTapSubjects()
     }
 
-    private func bindTapSubject() {
-        didTapSubject.sink { [weak self] movieId in
-            guard let self else { return }
-            movieRouter.navigate(to: .detail(movieId: movieId))
+    private func bindTapSubjects() {
+        moviesDidTap.sink { [weak self] movieId in
+            self?.moviesRouter.navigate(to: .detail(movieId: movieId))
+        }.store(in: &subscribers)
+
+        favouritesDidTap.sink { [weak self] movieId in
+            self?.favouritesRouter.navigate(to: .detail(movieId: movieId))
         }.store(in: &subscribers)
     }
 }

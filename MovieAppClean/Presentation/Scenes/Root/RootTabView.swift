@@ -15,34 +15,37 @@ protocol RootTabViewModelProtocol: ObservableObject {
 
     var movieListVM: MovieVM { get }
     var favouriteListVM: FavouriteVM { get }
-    var movieRouter: MovieRouter { get }
+    var moviesRouter: MovieRouter { get }
+    var favouritesRouter: MovieRouter { get }
 }
 
 struct RootTabView<ViewModel: RootTabViewModelProtocol>: View {
     @ObservedObject private var viewModel: ViewModel
-    @StateObject private var movieRouter: MovieRouter
+    @StateObject private var moviesRouter: MovieRouter
+    @StateObject private var favouritesRouter: MovieRouter
 
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
-        self._movieRouter = StateObject(wrappedValue: viewModel.movieRouter)
+        self._moviesRouter = StateObject(wrappedValue: viewModel.moviesRouter)
+        self._favouritesRouter = StateObject(wrappedValue: viewModel.favouritesRouter)
     }
 
     var body: some View {
         TabView {
-            NavigationStack(path: $movieRouter.path) {
+            NavigationStack(path: $moviesRouter.path) {
                 MovieListView(viewModel: viewModel.movieListVM)
                     .navigationDestination(for: MovieNavigationDestination.self) { destination in
-                        movieRouter.buildView(for: destination)
+                        moviesRouter.buildView(for: destination)
                     }
             }
             .tabItem {
                 Label("Movies", systemImage: "film.stack")
             }
 
-            NavigationStack(path: $movieRouter.path) {
+            NavigationStack(path: $favouritesRouter.path) {
                 FavouritesView(viewModel: viewModel.favouriteListVM)
                     .navigationDestination(for: MovieNavigationDestination.self) { destination in
-                        movieRouter.buildView(for: destination)
+                        favouritesRouter.buildView(for: destination)
                     }
             }
             .tabItem {

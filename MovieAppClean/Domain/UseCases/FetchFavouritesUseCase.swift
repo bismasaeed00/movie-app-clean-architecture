@@ -6,7 +6,7 @@
 //
 
 protocol FetchFavouritesUseCaseProtocol {
-    func execute() -> [Movie]
+    @MainActor func execute() -> [Movie]
 }
 
 final class FetchFavouritesUseCase: FetchFavouritesUseCaseProtocol {
@@ -16,6 +16,7 @@ final class FetchFavouritesUseCase: FetchFavouritesUseCaseProtocol {
         self.favouriteRepository = favouriteRepository
     }
 
+    @MainActor
     func execute() -> [Movie] {
         favouriteRepository.fetchFavourites()
     }

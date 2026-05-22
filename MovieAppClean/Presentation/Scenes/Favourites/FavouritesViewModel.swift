@@ -14,8 +14,9 @@ final class FavouritesViewModel: FavouritesViewModelProtocol {
 
     @Published private(set) var movieRowVMs: [MovieRowViewModel] = []
 
-    init(favouriteRepository: FavouriteRepositoryProtocol, didTapSubject: PassthroughSubject<Int, Never>) {
-        self.fetchFavouritesUseCase = FetchFavouritesUseCase(favouriteRepository: favouriteRepository)
+    init(fetchFavouritesUseCase: FetchFavouritesUseCaseProtocol,
+         didTapSubject: PassthroughSubject<Int, Never>) {
+        self.fetchFavouritesUseCase = fetchFavouritesUseCase
         self.didTapSubject = didTapSubject
     }
 

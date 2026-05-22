@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 
+@MainActor
 final class MovieListViewModel: MovieListViewModelProtocol {
     private let didTapSubject: PassthroughSubject<Int, Never>
     let navigationTitle: String
@@ -18,18 +19,16 @@ final class MovieListViewModel: MovieListViewModelProtocol {
     @Published private(set) var hasMorePages: Bool = false
     @Published private(set) var nextPageTitle: String = ""
 
-    // MARK: - Dependencies
     private let fetchMoviesUseCase: FetchMoviesUseCaseProtocol
     private let refreshMoviesUseCase: RefreshMoviesUseCaseProtocol
-
-    // MARK: - Pagination state
     private var currentPage: Int = 1
 
-    init(movieRepository: MovieRepositoryProtocol, didTapSubject: PassthroughSubject<Int, Never>) {
-        self.fetchMoviesUseCase = FetchMoviesUseCase(movieRepository: movieRepository)
-        self.refreshMoviesUseCase = RefreshMoviesUseCase(movieRepository: movieRepository)
+    init(fetchMoviesUseCase: FetchMoviesUseCaseProtocol,
+         refreshMoviesUseCase: RefreshMoviesUseCaseProtocol,
+         didTapSubject: PassthroughSubject<Int, Never>) {
+        self.fetchMoviesUseCase = fetchMoviesUseCase
+        self.refreshMoviesUseCase = refreshMoviesUseCase
         self.didTapSubject = didTapSubject
-
         navigationTitle = "Movies"
     }
 
@@ -39,9 +38,7 @@ final class MovieListViewModel: MovieListViewModelProtocol {
 
     func refresh() async {
         currentPage = 1
-        await performAction {
-            try await refreshMoviesUseCase.execute()
-        }
+        await performAction { try await self.refreshMoviesUseCase.execute() }
     }
 
     func loadNextPage() async {
@@ -52,9 +49,7 @@ final class MovieListViewModel: MovieListViewModelProtocol {
     // MARK: - Private
 
     private func loadMovies(page: Int) async {
-        await performAction {
-            try await fetchMoviesUseCase.execute(page: page)
-        }
+        await performAction { try await self.fetchMoviesUseCase.execute(page: page) }
     }
 
     private func performAction(_ action: () async throws -> PaginatedMovies) async {
@@ -67,7 +62,7 @@ final class MovieListViewModel: MovieListViewModelProtocol {
             }
             currentPage = result.currentPage
             hasMorePages = result.hasMorePages
-            nextPageTitle = result.nextPageTitle
+            nextPageTitle = "Next Page: \(result.currentPage + 1) out of \(result.totalPages)"
         } catch {
             errorMessage = error.localizedDescription
         }

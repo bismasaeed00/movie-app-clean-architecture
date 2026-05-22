@@ -31,16 +31,12 @@ struct FavouritesView<ViewModel: FavouritesViewModelProtocol>: View {
                     message: "Mark movies as favourite on the detail page."
                 )
             } else {
-                VStack {
-                    ForEach(viewModel.movieRowVMs) { movieVM in
-                        MovieRowView(viewModel: movieVM)
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                    }
-                    .listStyle(.plain)
-
-                    Spacer()
+                List(viewModel.movieRowVMs) { movieVM in
+                    MovieRowView(viewModel: movieVM)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                 }
+                .listStyle(.plain)
             }
         }
         .navigationTitle("Favourites")

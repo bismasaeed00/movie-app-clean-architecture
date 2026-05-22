@@ -11,12 +11,10 @@ import SwiftUI
 final class MovieRouter: ObservableObject {
     @Published var path: [MovieNavigationDestination] = []
 
-    private let movieRepository: MovieRepositoryProtocol
-    private let favouriteRepository: FavouriteRepositoryProtocol
+    private let factory: MovieDetailViewModelFactoryProtocol
 
-    init(movieRepository: MovieRepositoryProtocol, favouriteRepository: FavouriteRepositoryProtocol) {
-        self.movieRepository = movieRepository
-        self.favouriteRepository = favouriteRepository
+    init(factory: MovieDetailViewModelFactoryProtocol) {
+        self.factory = factory
     }
 
     func navigate(to destination: MovieNavigationDestination) {
@@ -27,15 +25,12 @@ final class MovieRouter: ObservableObject {
         path.removeLast()
     }
 
-    @ViewBuilder
+    @MainActor @ViewBuilder
     func buildView(for destination: MovieNavigationDestination) -> some View {
         switch destination {
         case .detail(let movieId):
-            if let movie = movieRepository.cachedMovie(movieId: movieId) {
-                let detailViewModel = MovieDetailViewModel(movie: movie,
-                                                           movieRepository: movieRepository,
-                                                           favouriteRepository: favouriteRepository)
-                MovieDetailView(viewModel: detailViewModel)
+            if let viewModel = factory.makeMovieDetailViewModel(movieId: movieId) {
+                MovieDetailView(viewModel: viewModel)
             }
         }
     }

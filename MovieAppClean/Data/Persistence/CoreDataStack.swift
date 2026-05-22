@@ -24,6 +24,7 @@ final class CoreDataStack {
         persistentContainer.viewContext
     }
 
+    @MainActor
     func saveContext() {
         let ctx = context
         guard ctx.hasChanges else { return }
@@ -31,6 +32,23 @@ final class CoreDataStack {
             try ctx.save()
         } catch {
             print("Core Data save error: \(error.localizedDescription)")
+        }
+    }
+
+    // Runs `block` on a private background context, saves on success, and returns the result.
+    func performBackgroundTask<T: Sendable>(_ block: @escaping @Sendable (NSManagedObjectContext) throws -> T) async throws -> T {
+        try await withCheckedThrowingContinuation { continuation in
+            persistentContainer.performBackgroundTask { bgContext in
+                do {
+                    let result = try block(bgContext)
+                    if bgContext.hasChanges {
+                        try bgContext.save()
+                    }
+                    continuation.resume(returning: result)
+                } catch {
+                    continuation.resume(throwing: error)
+                }
+            }
         }
     }
 }

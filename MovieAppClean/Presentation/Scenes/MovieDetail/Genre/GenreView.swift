@@ -21,7 +21,7 @@ struct GenreView<ViewModel: GenreViewModelProtocol>: View {
 
     var body: some View {
         FlowLayout(spacing: 8) {
-            ForEach(viewModel.genreNames, id: \.self) { genre in
+            ForEach(Array(viewModel.genreNames.enumerated()), id: \.offset) { _, genre in
                 Text(genre)
                     .font(.footnote)
                     .fontWeight(.semibold)

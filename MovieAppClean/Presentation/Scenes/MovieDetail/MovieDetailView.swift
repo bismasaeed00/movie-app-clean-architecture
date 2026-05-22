@@ -5,7 +5,6 @@
 //  Created by Bisma Saeed on 17.05.26.
 //
 
-import Foundation
 import SwiftUI
 
 @MainActor
@@ -19,6 +18,7 @@ protocol MovieDetailViewModelProtocol: ObservableObject {
     var posterURL: URL? { get }
     var genreVM: GenreViewModel { get }
     var hasGenre: Bool { get }
+    var errorMessage: String? { get }
 
     func onAppear() async
     func toggleFavourite()
@@ -32,6 +32,30 @@ struct MovieDetailView<ViewModel: MovieDetailViewModelProtocol>: View {
     }
 
     var body: some View {
+        Group {
+            if let error = viewModel.errorMessage {
+                ErrorView(message: error) {
+                    Task { await viewModel.onAppear() }
+                }
+            } else {
+                detailContent
+            }
+        }
+        .task {
+            await viewModel.onAppear()
+        }
+        .navigationTitle(viewModel.title)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                favouriteButton
+            }
+        }
+    }
+
+    // MARK: - Subviews
+
+    private var detailContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 posterView
@@ -71,19 +95,7 @@ struct MovieDetailView<ViewModel: MovieDetailViewModelProtocol>: View {
             }
             .padding(.vertical)
         }
-        .task {
-            await viewModel.onAppear()
-        }
-        .navigationTitle(viewModel.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                favouriteButton
-            }
-        }
     }
-
-    // MARK: - Subviews
 
     private var favouriteButton: some View {
         Button {

@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
-import CoreData
 
 @main
 struct MovieAppCleanApp: App {
     var body: some Scene {
         WindowGroup {
-            RootTabView(viewModel: RootTabViewModel(movieRepository: DependencyManager.shared.movieRepository,
-                                                    favouriteRepository: DependencyManager.shared.favouriteRepository))
+            let deps = DependencyManager.shared
+            RootTabView(viewModel: RootTabViewModel(
+                fetchMoviesUseCase: deps.fetchMoviesUseCase,
+                refreshMoviesUseCase: deps.refreshMoviesUseCase,
+                fetchFavouritesUseCase: deps.fetchFavouritesUseCase,
+                movieDetailViewModelFactory: deps.movieDetailViewModelFactory
+            ))
         }
     }
 }

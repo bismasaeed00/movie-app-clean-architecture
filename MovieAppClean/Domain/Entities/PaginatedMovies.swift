@@ -5,8 +5,6 @@
 //  Created by Bisma Saeed on 18.05.26.
 //
 
-import Foundation
-
 struct PaginatedMovies {
     let movies: [Movie]
     let currentPage: Int
@@ -14,9 +12,5 @@ struct PaginatedMovies {
 
     var hasMorePages: Bool {
         currentPage < totalPages
-    }
-
-    var nextPageTitle: String {
-        "Next Page: \(currentPage + 1) out of \(totalPages)"
     }
 }

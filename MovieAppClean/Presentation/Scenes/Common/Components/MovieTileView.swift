@@ -10,6 +10,19 @@ import SwiftUI
 struct MovieTileView: View {
     let movie: Movie
 
+    private var posterURL: URL? {
+        movie.posterPath.flatMap { URL(string: "https://image.tmdb.org/t/p/w500\($0)") }
+    }
+
+    private var formattedRating: String {
+        String(format: "%.1f", movie.voteAverage)
+    }
+
+    private var formattedYear: String {
+        guard let date = movie.releaseDate, date.count >= 4 else { return "N/A" }
+        return String(date.prefix(4))
+    }
+
     var body: some View {
         HStack(alignment: .top, spacing: 14) {
             posterImage
@@ -27,7 +40,7 @@ struct MovieTileView: View {
     // MARK: - Subviews
 
     private var posterImage: some View {
-        AsyncImage(url: movie.posterURL) { phase in
+        AsyncImage(url: posterURL) { phase in
             switch phase {
             case .success(let image):
                 image.resizable().aspectRatio(contentMode: .fill)
@@ -55,12 +68,12 @@ struct MovieTileView: View {
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
                     .font(.caption)
-                Text(movie.formattedRating)
+                Text(formattedRating)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Text("·")
                     .foregroundColor(.secondary)
-                Text(movie.formattedYear)
+                Text(formattedYear)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }

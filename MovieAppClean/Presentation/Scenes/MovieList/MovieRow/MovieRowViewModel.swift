@@ -10,6 +10,7 @@ import Foundation
 
 final class MovieRowViewModel: MovieRowViewModelProtocol, Identifiable {
     private let movie: Movie
+    private let didTapSubject: PassthroughSubject<Int, Never>
 
     let posterURL: URL?
     let title: String
@@ -17,16 +18,17 @@ final class MovieRowViewModel: MovieRowViewModelProtocol, Identifiable {
     let releaseYear: String
     let overview: String
 
-    let didTapSubject: PassthroughSubject<Int, Never>
-
     init(movie: Movie, didTapSubject: PassthroughSubject<Int, Never>) {
         self.movie = movie
-        self.posterURL = movie.posterURL
-        self.title = movie.title
-        self.rating = movie.formattedRating
-        self.releaseYear = movie.formattedYear
-        self.overview = movie.overview
         self.didTapSubject = didTapSubject
+        self.posterURL = movie.posterPath.flatMap { URL(string: "https://image.tmdb.org/t/p/w500\($0)") }
+        self.title = movie.title
+        self.rating = String(format: "%.1f", movie.voteAverage)
+        self.releaseYear = {
+            guard let date = movie.releaseDate, date.count >= 4 else { return "N/A" }
+            return String(date.prefix(4))
+        }()
+        self.overview = movie.overview
     }
 
     func onTap() {
